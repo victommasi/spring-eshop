@@ -12,18 +12,18 @@ public enum Category {
 	VOLLEY(8, "Volley");
 	
 	private Integer id;
-	private String description;
+	private String text;
 	
-	Category(Integer id, String description){
+	Category(Integer id, String text){
 		this.id = id;
-		this.description = description;
+		this.text = text;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getText() {
+		return text;
 	}
 }

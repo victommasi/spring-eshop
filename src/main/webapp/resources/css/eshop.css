@@ -1,0 +1,12 @@
+.top-buffer { 
+	margin-top:70px; 
+}
+
+.hand-cursor { 
+	cursor: pointer; 
+	cursor: hand; 
+}
+
+.table-hoverplus>tbody>tr:hover>td{
+  background-color: #eeeeee;
+}

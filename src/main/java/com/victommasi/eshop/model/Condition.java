@@ -6,19 +6,19 @@ public enum Condition {
 	USED(2, "Used");
 	
 	private Integer id;
-	private String description;
+	private String text;
 	
-	Condition(Integer id, String description){
+	Condition(Integer id, String text){
 		this.id = id;
-		this.description = description;
+		this.text = text;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getText() {
+		return text;
 	}
 	
 }

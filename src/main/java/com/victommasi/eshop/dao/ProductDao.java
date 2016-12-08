@@ -1,10 +1,12 @@
 package com.victommasi.eshop.dao;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.victommasi.eshop.model.Category;
 import com.victommasi.eshop.model.Condition;
@@ -16,7 +18,7 @@ public class ProductDao {
 
 	private List<Product> listProduct;
 	
-	public List<Product> listAll(){
+	public List<Product> findAll(){
 		
 		Product product1 = new Product();
 		product1.setId(1);
@@ -30,7 +32,7 @@ public class ProductDao {
 		product1.setStock(2);
 		
 		Product product2 = new Product();
-		product2.setId(1);
+		product2.setId(2);
 		product2.setName("Inverse");
 		product2.setCategory(Category.CASUAL);
 		product2.setCondition(Condition.NEW);
@@ -41,7 +43,7 @@ public class ProductDao {
 		product2.setStock(2);
 		
 		Product product3 = new Product();
-		product3.setId(1);
+		product3.setId(3);
 		product3.setName("Inverse");
 		product3.setCategory(Category.CASUAL);
 		product3.setCondition(Condition.NEW);
@@ -57,5 +59,16 @@ public class ProductDao {
 		listProduct.add(product3);
 		
 		return listProduct;
+	}
+
+	public Product findOne(Integer id) throws IOException {
+
+		for(Product product : findAll()){
+			if(product.getId() == id){
+				return product;
+			}
+		}
+		
+		throw new IOException("No product found");
 	}
 }

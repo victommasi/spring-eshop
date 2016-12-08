@@ -7,13 +7,13 @@ public enum Size {
 	F2("42"), F3("43"), F4("44"), F5("45"),
 	F6("46");
 	
-	private String size;
+	private String text;
 	
-	Size(String size){
-		this.size = size;
+	Size(String text){
+		this.text = text;
 	}
 	
-	public String getSize(){
-		return this.size;
+	public String getText(){
+		return this.text;
 	}
 }
