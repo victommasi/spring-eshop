@@ -2,6 +2,7 @@ package com.victommasi.eshop.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,48 +17,60 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.NumberFormat;
 
+import com.victommasi.eshop.model.util.Category;
+import com.victommasi.eshop.model.util.Condition;
+import com.victommasi.eshop.model.util.Size;
+
 @Entity
-@Table (name="product")
+@Table(name="product")
 public class Product {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="product_id")
 	private Integer id;
 	
 	@NotBlank
+	@Column(name="product_name")
 	private String name;
 	
 	@NotBlank
+	@Column(name="product_description")
 	private String description;
 	
 	@NotNull(message = "Price cannot be null")
 	@DecimalMin(value = "0.01", message = "Price cannot be less than 0,01")
 	@DecimalMax(value = "9999999.99", message = "Price cannot be more than 9.999.999,99")
 	@NumberFormat(pattern = "#,##0.00")
+	@Column(name="product_price")
 	private BigDecimal price;
 	
 	@NotBlank
+	@Column(name="product_manufacturer")
 	private String manufacturer;
 	
 	@NotNull
+	@Column(name="product_stock")
 	private int stock;
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
+	@Column(name="product_category")
 	private Category category;
 	
 	@NotNull(message="Product must have condition")
 	@Enumerated(EnumType.STRING)
+	@Column(name="product_condition")
 	private Condition condition;
 	
 	@NotNull(message="Product must have a size")
 	@Enumerated(EnumType.STRING)
+	@Column(name="product_size")
 	private Size size;
 
 	
 	public Product(){}
 
-	
 	public Integer getId() {
 		return id;
 	}
@@ -121,7 +134,7 @@ public class Product {
 	public void setCondition(Condition condition) {
 		this.condition = condition;
 	}
-	
+
 	public Size getSize() {
 		return size;
 	}

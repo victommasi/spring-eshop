@@ -9,10 +9,10 @@
   <url>http://maven.apache.org</url>
   
 <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
+        <springframework.version>4.2.4.RELEASE</springframework.version>
         <spring.security.version>4.0.3.RELEASE</spring.security.version>
-        <spring.jpa.data.version>1.9.2.RELEASE</spring.jpa.data.version>
-		<hibernate.version>4.2.1.Final</hibernate.version>
+        <spring.jpa.data.version>1.9.5.RELEASE</spring.jpa.data.version>
+		<hibernate.version>5.0.9.Final</hibernate.version>
         <logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>		
 		<jsp.version>2.2</jsp.version> 
@@ -23,7 +23,7 @@
   
   <dependencies>
   
-        <dependency>
+         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
@@ -48,12 +48,18 @@
             <version>${springframework.version}</version>
         </dependency>
 
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+          
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring.jpa.data.version}</version>
         </dependency>
-
+        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
@@ -103,6 +109,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
+			<scope>provided</scope>
 		</dependency>
 		
 		<!-- Other Servlet Web dependencies -->
@@ -129,7 +136,7 @@
 		<dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.10</version>
+            <version>5.1.40</version>
         </dependency>
         
         <!-- Test Artifacts -->
@@ -157,7 +164,17 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>3.1</version>
+		        <configuration>
+		            <source>1.8</source>
+		            <target>1.8</target>
+		        </configuration>
+    		</plugin>
 		</plugins>
-    <finalName>spring-eshop</finalName>
+    <finalName>eshop</finalName>
   </build>
 </project>

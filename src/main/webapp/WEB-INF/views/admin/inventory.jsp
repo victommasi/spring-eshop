@@ -1,12 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
 
 	<div class="container-wrapper">
 		<div class="container">
 			<div class="jumbotron">
-					<h1> All Products</h1>
-					<p class="lead"> Checkout all the awesome products available now! </p>
+					<h1> Product Inventory </h1>
+					<p class="lead"> Manage the products </p>
 			</div>	
+		
 		
 		<table class="table table-striped table-hover hand-cursor table-hoverplus">
 			<thead>
@@ -30,5 +31,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<a class="btn btn-primary" href="<spring:url value="/product/addProduct" />"> Add Product </a>
 		
 <%@ include file="/WEB-INF/views/template/footer.jsp" %>
