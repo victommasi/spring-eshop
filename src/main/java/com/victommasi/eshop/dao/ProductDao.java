@@ -13,5 +13,7 @@ public interface ProductDao {
 	void save(Product product);
 	
 	void delete(Integer id);
+
+	byte[] findImage(Integer id);
 	
 }

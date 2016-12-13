@@ -1,8 +1,10 @@
 package com.victommasi.eshop.controller;
 
+import java.io.UnsupportedEncodingException;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +21,7 @@ import com.victommasi.eshop.model.Product;
 import com.victommasi.eshop.model.util.Category;
 import com.victommasi.eshop.model.util.Condition;
 import com.victommasi.eshop.model.util.Size;
+import com.victommasi.eshop.service.ImageService;
 import com.victommasi.eshop.service.ProductService;
 
 @Controller
@@ -31,6 +34,9 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
+	@Autowired
+	ImageService imageService;
+	
 	@RequestMapping
 	public ModelAndView list(){
 		ModelAndView mv = new ModelAndView("product/list");
@@ -41,6 +47,10 @@ public class ProductController {
 	@RequestMapping("/{id}")
 	public ModelAndView viewProduct(@PathVariable Integer id) {
 		ModelAndView mv = new ModelAndView("product/detail");
+		
+        String base64Encoded = imageService.convert2String(id);
+        
+        mv.addObject("productImage", base64Encoded);
 		mv.addObject("product", productDao.findOne(id));
 		return mv;
 	}
@@ -62,10 +72,14 @@ public class ProductController {
 								   BindingResult result,
 								   RedirectAttributes attributes) {
 		
-		if (result.hasErrors()) {
+		if (result.hasErrors() && (result.getErrorCount() > 1  
+							   || !result.hasFieldErrors("image"))) {
 			return addProduct(product);
 		}
 		
+		if (!image.isEmpty()){
+			product.setImage(imageService.convert2Byte(image));
+		}
 		productService.saveProduct(product);
 		attributes.addFlashAttribute("message", "Product created sucessfully!");
 		return new ModelAndView("redirect:/product/new");

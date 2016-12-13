@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.victommasi.eshop.dao.ProductDao;
+import com.victommasi.eshop.exception.ImageDoesnotExistsException;
 import com.victommasi.eshop.exception.ProductDoesnotExistsException;
 import com.victommasi.eshop.model.Product;
 
@@ -50,6 +51,23 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public void delete(Integer id) {
 		this.manager.remove(findOne(id));
+	}
+
+	@Override
+	public byte[] findImage(Integer id) {
+		String jpql = "select p from Product p where p.id = :id";
+		List<Product> productList = this.manager
+				.createQuery(jpql, Product.class)
+				.setParameter("id", id)
+				.getResultList();
+		
+			if(productList.isEmpty()){
+				throw new ImageDoesnotExistsException
+								("Product doesnt have image yet.");
+			}
+			
+		byte[] image = productList.get(0).getImage();
+		return image;
 	}
 
 }

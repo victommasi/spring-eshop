@@ -2,6 +2,7 @@ package com.victommasi.eshop.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

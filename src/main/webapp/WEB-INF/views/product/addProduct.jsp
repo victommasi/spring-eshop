@@ -100,7 +100,7 @@
 			        <div class="col-sm-6 form-group">
 			            <label class="control-label" for="image"> Upload image</label>  <form:errors path="" cssStyle="color: #c9302c;" />
 			            <div class="input-group">
-				            <form:input type="file" path="image" id="image" class="filestyle" data-icon="false"/>
+				            <form:input type="file" accept="image/jpg, image/png, image/jpeg" path="image" id="image" class="filestyle" data-icon="false"/>
 			        	</div>
 			        </div>
 		        </div>

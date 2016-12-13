@@ -11,7 +11,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5">
-				<img src="" alt="image" style="witdh: 100%; height: 300px"/>
+				<c:choose>
+					<c:when test="${not empty productImage }">
+						<img src="data:image/*;base64,${productImage }" alt="image" style="witdh: 100%; height: 300px"/>
+					</c:when>
+					<c:when test="${empty productImage }">
+						<img src="<c:url value="/resources/images/mockup.jpg" /> " alt="image" style="witdh: 100%; height: 300px"/>
+					</c:when>
+				</c:choose>
 			</div>
 			<div class="col-md-5">
 				<h3> ${product.name } </h3>
