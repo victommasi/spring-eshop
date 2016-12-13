@@ -4,6 +4,7 @@ package com.victommasi.eshop.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -32,24 +33,25 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
+
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver getMultipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(1048576);
+		multipartResolver.setMaxInMemorySize(1048576);
+		return multipartResolver;
+	}
+	
+	
+	
 	/*
-	 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigure(){
 		PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
 		propertyPlaceholderConfigurer.setLocation(new ClassPathResource("application.properties"));
 		return new PropertySourcesPlaceholderConfigurer();
 		
-	}*/
-
-
-	/*
-	// interface for multipart file upload resolution
-	@Bean(name = "multipartResolver")
-	public CommonsMultipartResolver getMultipartResolver() {
-		return new CommonsMultipartResolver();
 	}
-
 	
 	//implementation that accesses resource bundles
 	@Bean(name = "messageSource")

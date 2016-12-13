@@ -13,10 +13,11 @@ public class AdminController {
 	
 	@Autowired
 	private ProductDao productDao;
+	
 
 	@RequestMapping
 	public String adminPage(){
-		return "admin/home";
+		return "admin/admin";
 	}
 	
 	@RequestMapping("/inventory")
@@ -25,4 +26,11 @@ public class AdminController {
 		mv.addObject("products", productDao.findAll());
 		return mv;
 	}
+	
+	/*@RequestMapping("/inventory")
+	public ModelAndView viewCustomer(){
+		ModelAndView mv = new ModelAndView("admin/customer");
+		//mv.addObject("customers", customersDao.findAll());
+		return mv;
+	}*/
 }

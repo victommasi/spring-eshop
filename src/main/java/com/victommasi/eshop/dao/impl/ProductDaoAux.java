@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.victommasi.eshop.model.Product;
 import com.victommasi.eshop.model.util.Category;

@@ -10,3 +10,7 @@
 .table-hoverplus>tbody>tr:hover>td{
   background-color: #eeeeee;
 }
+
+.row-fluid {
+    word-wrap: break-word;  
+}

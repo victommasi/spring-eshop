@@ -9,29 +9,42 @@
 			</div>	
 		
 		
-		<table class="table table-striped table-hover hand-cursor table-hoverplus">
+		<table class="table table-responsive table-striped table-hover hand-cursor table-hoverplus">
 			<thead>
 				<tr class="bg-primary">
 					<th>Photo</th>
 					<th>Name</th>
 					<th>Category</th>
+					<th>Size</th>
 					<th>Condition</th>
 					<th>Price</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody data-link="row" class="rowlink">
 				<c:forEach items="${products }" var="product">
 				<tr>
 					<td><a href="<spring:url value="/product/${product.id }"/> "><img src="#" alt="image"/></a></td>
-					<td>${product.name}</td>
-					<td>${product.category.text}</td>
-					<td>${product.condition.text}</td>
-					<td>${product.price} USD</td>
+					<td class="col-md-3">${product.name}</td>
+					<td class="col-md-2">${product.category.text}</td>
+					<td class="col-md-1">${product.size.text}</td>
+					<td class="col-md-1">${product.condition.text}</td>
+					<td class="col-md-2">${product.price} USD</td>
+					<td class="col-md-1"> 
+						 <a style="font-size:1.2em;" title="Edit Product" class="glyphicon glyphicon-edit" 
+					      href="<spring:url value="/product/addProduct/${product.id }"/>">
+					     </a>
+					     <a style="font-size:1.2em; color:#c9302c;" title="Delete Product" class="glyphicon glyphicon-trash" 
+					      href="<spring:url value="/product/delete/${product.id }"/>">
+					     </a>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		
-		<a class="btn btn-primary" href="<spring:url value="/product/addProduct" />"> Add Product </a>
+		<a class="btn btn-primary" href="<spring:url value="/product/new" />"> Add Product </a>
+		<a class="btn btn-default" href="<spring:url value="/admin" />"> Return </a>
+		
 		
 <%@ include file="/WEB-INF/views/template/footer.jsp" %>

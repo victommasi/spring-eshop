@@ -25,9 +25,14 @@
 				<p> 
 					<strong> Condition:  </strong> ${product.condition.text } 
 				</p>
+				<p> 
+					<strong> Size:  </strong> ${product.size.text } 
+				</p>
 				<h4> ${product.price } USD</h4>
 			</div>
 		</div>
 	</div>
+	
+	<a class="btn btn-default" href="<c:url value="javascript:history.back()" />" > Return </a> 
 			
 <%@ include file="/WEB-INF/views/template/footer.jsp" %>

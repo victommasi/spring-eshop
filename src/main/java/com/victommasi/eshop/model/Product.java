@@ -1,5 +1,6 @@
 package com.victommasi.eshop.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -9,13 +10,16 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.NumberFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.victommasi.eshop.model.util.Category;
 import com.victommasi.eshop.model.util.Condition;
@@ -23,19 +27,23 @@ import com.victommasi.eshop.model.util.Size;
 
 @Entity
 @Table(name="product")
-public class Product {
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 5975289184954587497L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="product_id")
 	private Integer id;
 	
-	@NotBlank
+	@NotBlank(message="Name cannot be blank")
 	@Column(name="product_name")
+	@javax.validation.constraints.Size (max=50, message="Name cannot have more than 50 characters.")
 	private String name;
 	
-	@NotBlank
+	@NotBlank(message="Product must have a description")
 	@Column(name="product_description")
+	@javax.validation.constraints.Size (max=250, message="Description cannot have more than 250 characters.")
 	private String description;
 	
 	@NotNull(message = "Price cannot be null")
@@ -45,15 +53,18 @@ public class Product {
 	@Column(name="product_price")
 	private BigDecimal price;
 	
-	@NotBlank
+	@NotBlank(message="Product must have a manufacturer")
 	@Column(name="product_manufacturer")
+	@javax.validation.constraints.Size (max=50, message="Manufacturer cannot have more than 50 characters.")
 	private String manufacturer;
 	
 	@NotNull
+	@DecimalMin(value = "0", message = "Stock cannot be less than 0")
+	@DecimalMax(value = "999", message = "Stock cannot be more than 999")
 	@Column(name="product_stock")
 	private int stock;
 	
-	@NotNull
+	@NotNull(message="Product must have category")
 	@Enumerated(EnumType.STRING)
 	@Column(name="product_category")
 	private Category category;
@@ -67,7 +78,10 @@ public class Product {
 	@Enumerated(EnumType.STRING)
 	@Column(name="product_size")
 	private Size size;
-
+	
+	@Lob
+	@Column(name="product_image")
+	private byte[] image;
 	
 	public Product(){}
 
@@ -142,7 +156,14 @@ public class Product {
 	public void setSize(Size size) {
 		this.size = size;
 	}
+	
+	public byte[] getImage() {
+		return image;
+	}
 
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 
 	@Override
 	public int hashCode() {

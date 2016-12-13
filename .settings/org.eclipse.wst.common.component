@@ -5,6 +5,6 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <property name="java-output-path" value="/eshop/target/classes"/>
-        <property name="context-root" value="eshop"/>
+        <property name="context-root" value="spring-eshop"/>
     </wb-module>
 </project-modules>

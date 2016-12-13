@@ -120,6 +120,8 @@
       </div>
 
       <hr class="featurette-divider">
+      
+      </div>
 
       <!-- /END THE FEATURETTES -->
 

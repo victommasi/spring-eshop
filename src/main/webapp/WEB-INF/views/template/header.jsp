@@ -18,6 +18,9 @@
 <!-- Custom styles for this template -->
 <link href="<c:url value="/resources/css/carousel.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/eshop.css" />" rel="stylesheet">
+
+
+
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -36,7 +39,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#about">About</a></li>
+					<li><a href="<c:url value="/admin"/> ">Admin</a></li>
 					<li><a href="<c:url value="/product"/> ">Products</a></li>
 					<li><a href="#contact">Contact</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
