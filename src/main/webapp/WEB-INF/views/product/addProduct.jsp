@@ -64,7 +64,7 @@
 			            <form:textarea path="description" id="description" class="form-control" rows="3"/>
 			        </div>
 		
-					<div class="col-sm-6 form-group">
+					<div class="col-sm-3 form-group">
 			            <label for="stock">Units in stock</label> <form:errors path="stock" cssStyle="color: #c9302c;" />
 			            <form:input type="number" min="0" path="stock" id="stock" class="form-control" value=""/>
 			        </div>
@@ -83,7 +83,7 @@
 			            <label for="price">Price</label>  <form:errors path="price" cssStyle="color: #c9302c;" />
 			            <div class="input-group">
 				            <span class="input-group-addon">$</span>
-				            <form:input type="text" path="price" id="price" class="form-control js-currency"/>
+				            <form:input type="text" path="price" id="price" class="form-control"/>
 			        	</div>
 			        </div>
 			    </div>

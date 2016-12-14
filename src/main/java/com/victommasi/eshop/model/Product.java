@@ -50,7 +50,7 @@ public class Product implements Serializable {
 	@NotNull(message = "Price cannot be null")
 	@DecimalMin(value = "0.01", message = "Price cannot be less than 0,01")
 	@DecimalMax(value = "9999999.99", message = "Price cannot be more than 9.999.999,99")
-	@NumberFormat(pattern = "#,##0.00")
+	//@NumberFormat(pattern = "#,##0.00")
 	@Column(name="product_price")
 	private BigDecimal price;
 	

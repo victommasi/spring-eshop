@@ -7,5 +7,7 @@ public interface ProductService {
 	void saveProduct(Product product);
 	
 	void delete(Integer id);
+
+	void updateProduct(Product product);
 	
 }

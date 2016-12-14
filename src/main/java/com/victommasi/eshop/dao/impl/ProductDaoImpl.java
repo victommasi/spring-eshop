@@ -70,4 +70,9 @@ public class ProductDaoImpl implements ProductDao {
 		return image;
 	}
 
+	@Override
+	public void update(Product product) {
+		this.manager.merge(product);	
+	}
+
 }

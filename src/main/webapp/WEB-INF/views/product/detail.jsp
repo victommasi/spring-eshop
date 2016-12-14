@@ -12,10 +12,10 @@
 		<div class="row">
 			<div class="col-md-5">
 				<c:choose>
-					<c:when test="${not empty productImage }">
-						<img src="data:image/*;base64,${productImage }" alt="image" style="witdh: 100%; height: 300px"/>
+					<c:when test="${not empty product.image }">
+						<img src="<c:url value='/product/image/${product.id }'/>" alt="image" style="witdh: 100%; height: 300px"/>
 					</c:when>
-					<c:when test="${empty productImage }">
+					<c:when test="${empty product.image }">
 						<img src="<c:url value="/resources/images/mockup.jpg" /> " alt="image" style="witdh: 100%; height: 300px"/>
 					</c:when>
 				</c:choose>

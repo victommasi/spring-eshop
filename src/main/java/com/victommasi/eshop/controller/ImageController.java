@@ -21,8 +21,6 @@ public class ImageController {
 	@RequestMapping("/product/image/{id}")
 	@ResponseBody
 	public byte[] getProductImage(@PathVariable("id") Integer id){
-		 //String base64Encoded = imageService.convert2String(id);
-		//return base64Encoded;
 		return productDao.findImage(id);
 	}
 }

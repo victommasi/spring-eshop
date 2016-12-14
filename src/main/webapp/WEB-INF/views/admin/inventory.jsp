@@ -28,10 +28,10 @@
 						<a href="<spring:url value="/product/${product.id }"/> ">
 						<c:choose>
 							<c:when test="${not empty product.image }">
-								<img src="<c:url value='/product/image/${product.id}'/>" alt="image" style="witdh: 100%; height: 80px"/>
+								<img src="<c:url value='/product/image/${product.id}'/>" alt="image" style="witdh: 100%; height: 40px"/>
 							</c:when>
 							<c:when test="${empty product.image  }">
-								<img src="<c:url value="/resources/images/mockup.jpg" /> " alt="image" style="witdh: 100%; height: 80px"/>
+								<img src="<c:url value="/resources/images/mockup.jpg" /> " alt="image" style="witdh: 100%; height: 50px"/>
 							</c:when>
 						</c:choose>
 						</a>
@@ -43,7 +43,7 @@
 					<td class="col-md-2">${product.price} USD</td>
 					<td class="col-md-1"> 
 						 <a style="font-size:1.2em;" title="Edit Product" class="glyphicon glyphicon-edit" 
-					      href="<spring:url value="/product/addProduct/${product.id }"/>">
+					      href="<spring:url value="/product/edit/${product.id }"/>">
 					     </a>
 					     <a style="font-size:1.2em; color:#c9302c;" title="Delete Product" class="glyphicon glyphicon-trash" 
 					      href="<spring:url value="/product/delete/${product.id }"/>">

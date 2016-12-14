@@ -1,3 +1,20 @@
+.container-wrapper {
+	height: 80%;
+	margin: auto;
+	margin-top: 80px;
+	margin-bottom: 300px;
+}
+
+.home-image {
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.carousel-inner2{
+    height: 550px;
+}
+
 .top-buffer { 
 	margin-top:70px; 
 }

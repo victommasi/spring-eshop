@@ -1,10 +1,10 @@
 package com.victommasi.eshop.controller;
 
-import java.io.UnsupportedEncodingException;
 
 import javax.validation.Valid;
 
-import org.apache.tomcat.util.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -37,6 +37,9 @@ public class ProductController {
 	@Autowired
 	ImageService imageService;
 	
+	private static final Logger logger = LoggerFactory
+			.getLogger(ProductController.class);
+	
 	@RequestMapping
 	public ModelAndView list(){
 		ModelAndView mv = new ModelAndView("product/list");
@@ -47,10 +50,6 @@ public class ProductController {
 	@RequestMapping("/{id}")
 	public ModelAndView viewProduct(@PathVariable Integer id) {
 		ModelAndView mv = new ModelAndView("product/detail");
-		
-        String base64Encoded = imageService.convert2String(id);
-        
-        mv.addObject("productImage", base64Encoded);
 		mv.addObject("product", productDao.findOne(id));
 		return mv;
 	}
@@ -74,12 +73,14 @@ public class ProductController {
 		
 		if (result.hasErrors() && (result.getErrorCount() > 1  
 							   || !result.hasFieldErrors("image"))) {
+			logger.info("Returning addProduct.jsp page");
 			return addProduct(product);
 		}
 		
 		if (!image.isEmpty()){
 			product.setImage(imageService.convert2Byte(image));
 		}
+		
 		productService.saveProduct(product);
 		attributes.addFlashAttribute("message", "Product created sucessfully!");
 		return new ModelAndView("redirect:/product/new");
@@ -92,11 +93,11 @@ public class ProductController {
 		return new ModelAndView("redirect:/admin/inventory");
 	}
 	
-	/*
+	
 	@RequestMapping("/edit/{id}")
-	public ModelAndView updateProduct(@PathVariable("id") Product product){
-		ModelAndView mv = new ModelAndView("product/addProduct");
-		mv.addObject("product", product);
+	public ModelAndView updateProduct(@PathVariable("id") Integer id){
+		ModelAndView mv = new ModelAndView("product/editProduct");
+		mv.addObject("product", productDao.findOne(id));
 		mv.addObject("condition", Condition.values());
 		mv.addObject("category", Category.values());
 		mv.addObject("size", Size.values());
@@ -104,20 +105,33 @@ public class ProductController {
 	}
 	
 	
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-	public ModelAndView updateProduct(@PathVariable Integer id, 
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public ModelAndView updateProduct(@PathVariable("id") Integer id, 
 									   @Valid Product product, 
 									   BindingResult result, 
-									   RedirectAttributes attributes) {
+									   RedirectAttributes attributes,
+									   @RequestParam("image") MultipartFile image) {
 		
-		if (result.hasErrors()) {
-			return updateProduct(product);
+		if (result.hasErrors() && (result.getErrorCount() > 1  
+				   			   || !result.hasFieldErrors("image"))) {
+			logger.info("Returning editProduct.jsp page");
+			return updateProduct(id);
 		}
 		
-		//productService.saveCustomer(product);
+		verifyImageEmpty(image, id, product);
+		
+		productService.updateProduct(product);
 		attributes.addFlashAttribute("message", "Product updated sucessfully!");
 		return new ModelAndView("redirect:/admin/inventory");
 	}
-	*/
+
+	private void verifyImageEmpty(MultipartFile image, Integer id, Product product) {
+		if(!image.isEmpty()) {
+			product.setImage(imageService.convert2Byte(image));
+		}
+		else {
+			product.setImage(productDao.findImage(id));
+		}
+	}
 	
 }

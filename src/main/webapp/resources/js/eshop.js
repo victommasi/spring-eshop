@@ -1,0 +1,4 @@
+$(function() {
+	$('#price').maskMoney();
+});
+
