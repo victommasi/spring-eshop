@@ -30,7 +30,7 @@ import com.victommasi.eshop.model.util.Size;
 @Table(name="product")
 public class Product implements Serializable {
 
-	private static final long serialVersionUID = 5975289184954587497L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -18,13 +18,19 @@
 <!-- Custom styles for this template -->
 <link href="<c:url value="/resources/css/carousel.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/eshop.css" />" rel="stylesheet">
-
+<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 
 
 </head>
+<body>
+
+<!--  
+<input type="hidden" name="_csrf_header" value="${_csrf.headerName}"/>
+<input type="hidden" name="_csrf" value="${_csrf.token}"/>
+-->
+
 <!-- NAVBAR
 ================================================== -->
-<body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -55,16 +61,9 @@
 							<li><a href="#">One more separated link</a></li>
 						</ul></li>
 				</ul>
-				<form class="navbar-form navbar-right">
-					<div class="form-group">
-						<input type="text" placeholder="Email" class="form-control">
-					</div>
-					<div class="form-group">
-						<input type="password" placeholder="Password"
-							class="form-control">
-					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
-					<a href="#" class="btn btn-link">Register</a>
+				<form  class="navbar-form navbar-right">
+					<a href="<c:url value="/login" />" class="btn btn-primary">Login</a>
+					<a href="<c:url value="/register" />" class="btn btn-link">Register</a>
 				</form>
 			</div>
 		</div>

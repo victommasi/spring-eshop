@@ -11,14 +11,14 @@
 			
 			<div class="">
 					<a class="btn btn-default btn-lg btn-block" 
-						href="<c:url value="/admin/inventory"/>"> 
+						href="<c:url value="/admin/productInventory"/>"> 
 						<h3> Product Inventory </h3>
 						<section class="visible-lg-block">
 							<p> Here you can view, check and modify the product inventory</p>
 						</section>
 					</a>
 					<a class="btn btn-default btn-lg btn-block" 
-						href="<c:url value="/admin/customer"/>"> 
+						href="<c:url value="/admin/customerManagement"/>"> 
 						<h3> Customer Management </h3>
 						<section class="visible-lg-block">
 							<p> Here you can view the customer information</p>
