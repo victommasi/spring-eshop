@@ -1,2 +1,5 @@
 /target/
 src/main/resources/application.properties
+.classpath
+.project
+.settings

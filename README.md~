@@ -1,5 +1,6 @@
 # Spring-eshop
-E-commerce shoes store built with Java and Spring framework. This Spring application was configured using only Java and Annotations, no .XML needed. Technologies:
+
+### Under development[...] 
 * Java 8
 * Spring MVC
 * JPA/Hibernate
@@ -7,8 +8,6 @@ E-commerce shoes store built with Java and Spring framework. This Spring applica
 * JSP
 * Bootstrap
 * jQuery
-
-### Under development[...] 
 
 
 ### USAGE:
