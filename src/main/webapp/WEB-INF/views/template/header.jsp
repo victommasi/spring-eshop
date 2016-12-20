@@ -25,8 +25,7 @@
 <body>
 
 <!--  
-<input type="hidden" name="_csrf_header" value="${_csrf.headerName}"/>
-<input type="hidden" name="_csrf" value="${_csrf.token}"/>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 -->
 
 <!-- NAVBAR

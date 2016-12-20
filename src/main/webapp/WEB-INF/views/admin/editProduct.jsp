@@ -15,7 +15,6 @@
 						<span>${message}</span>
 				</div>
 			</c:if>
-		
 		   <spring:url value="/admin/product/edit/${product.id }" var="editProductUrl" />
 	       <form:form method="POST" action="${editProductUrl}" modelAttribute="product" enctype="multipart/form-data">
 		        
@@ -30,7 +29,6 @@
 					</block>
 				</div>
 				-->
-				 
 		        
 		        <div class="row">
 		       	  	<div class="col-sm-6 form-group">
@@ -114,9 +112,8 @@
 			    		</div>
 			    	</div>
 			    </div>
-		        
+
 	        </form:form>
         </div>
  
-
 <%@ include file="/WEB-INF/views/template/footer.jsp" %>

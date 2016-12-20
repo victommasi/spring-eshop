@@ -45,23 +45,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 			.loginPage("/login")
 			.permitAll()
-			.failureUrl("/login?error")
 			.usernameParameter("username")
 			.passwordParameter("password")
 		.and()
 			.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
-			//.logoutSuccessUrl("/login?logout")
-		//.and()
-			//.exceptionHandling().accessDeniedPage("/403");
-		//.and()
-		  //.csrf()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.and()
+			.exceptionHandling().accessDeniedPage("/403")
+		.and()
+		  	.csrf();
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
-			.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+			.userDetailsService(userDetailsService);
+			//.passwordEncoder(passwordEncoder());
 	} 	
 	
 	@Bean
