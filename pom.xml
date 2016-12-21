@@ -17,7 +17,7 @@
 		<slf4j.version>1.7.5</slf4j.version>		
 		<jsp.version>2.2</jsp.version> 
 		<jstl.version>1.2</jstl.version> 
-		<jackson.databind-version>2.2.3</jackson.databind-version>
+		<jackson.databind-version>2.5.1</jackson.databind-version>
 		<junit.version>4.11</junit.version>
   </properties>
   
@@ -135,6 +135,18 @@
         <dependency>
           	<groupId>com.fasterxml.jackson.core</groupId>
           	<artifactId>jackson-databind</artifactId>
+          	<version>${jackson.databind-version}</version>
+        </dependency>
+        
+         <dependency>
+          	<groupId>com.fasterxml.jackson.core</groupId>
+          	<artifactId>jackson-annotations</artifactId>
+          	<version>${jackson.databind-version}</version>
+        </dependency>
+        
+         <dependency>
+          	<groupId>com.fasterxml.jackson.core</groupId>
+          	<artifactId>jackson-core</artifactId>
           	<version>${jackson.databind-version}</version>
         </dependency>
         

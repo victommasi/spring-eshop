@@ -30,7 +30,7 @@ public class User implements Serializable {
 	private String email;
 	
 	@OneToMany(mappedBy = "user")
-	public Set<UserRole> userRoles = new HashSet<UserRole>();
+	public Set<UserRole> userRoles;
 	
 	@NotNull
 	@Column(name = "enabled")

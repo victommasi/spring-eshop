@@ -6,30 +6,40 @@
 	
 	<spring:url value="/login" var="loginUrl" />
 	<form:form method="POST" action="${loginUrl}" class="form-signin">
-		<h2 class="form-signin-heading">Please Log in</h2>
+	<div class="simple-panel">
+		<h2 class="form-signin-heading">Please log in</h2>
 		 <c:if test="${param.error != null}">
-            <div class="alert alert-danger alert-dismissible">
-           	    <button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+			<div class="simple-panel-message error-msg">
                 <p>Invalid username and password.</p>
-            </div>
+			</div>
         </c:if>
         <c:if test="${param.logout != null}">
-            <div class="alert alert-success alert-dismissible">
-            	<button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+            <div class="simple-panel-message logout-msg">
                 <p>You have been logged out successfully.</p>
             </div>
         </c:if>
-		<label for="username" class="sr-only">Username</label>
-		<input type="text" name="username" id="username" class="form-control" placeholder="Username"></input>
-		<label for="password" class="sr-only">Password</label>
-		<input type="password" name="password" id="password" class="form-control" placeholder="Password"></input>
-		<div class="checkbox">
-			<label> <input type="checkbox" value="remember-me">
-				Remember me
-			</label>
+		<div class="simple-panel-box">
+			<div class="form-group  has-feedback">
+				<label for="username" class="sr-only">Username</label>
+				<input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username" autofocus="autofocus"></input>
+				<span class="glyphicon  glyphicon-envelope  form-control-feedback login-icon"></span>
+			</div>
+			<div class="form-group  has-feedback">
+				<label for="password" class="sr-only">Password</label>
+				<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password"></input>
+				<span class="glyphicon  glyphicon-lock  form-control-feedback login-icon"></span>
+			</div>
+			
+			<div class="checkbox">
+				<!-- <label> <input type="checkbox" value="remember-me">
+					Remember me
+				</label> -->
+			</div>
+			
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	</div>
 	</form:form>
 </div>
 

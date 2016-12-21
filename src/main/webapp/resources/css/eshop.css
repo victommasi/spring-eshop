@@ -3,6 +3,7 @@
 	margin: auto;
 	margin-top: 80px;
 	margin-bottom: 300px;*/
+	
 }
 
 .container-wrapper-login {
@@ -12,30 +13,57 @@
 	margin-bottom: 300px;
 }
 
-
 .home-image {
 	display: block;
 	width: 100% !important;
 	height: 100% !important;
 }
 
-.carousel-inner2{
-    height: 550px;
+.carousel-inner2 {
+	height: 550px;
 }
 
-.top-buffer { 
-	margin-top:70px; 
+.top-buffer {
+	margin-top: 70px;
 }
 
-.hand-cursor { 
-	cursor: pointer; 
-	cursor: hand; 
+.hand-cursor {
+	cursor: pointer;
+	cursor: hand;
 }
 
-.table-hoverplus>tbody>tr:hover>td{
-  background-color: #eeeeee;
+.table-hoverplus>tbody>tr:hover>td {
+	background-color: #eeeeee;
 }
 
 .row-fluid {
-    word-wrap: break-word;  
+	word-wrap: break-word;
+}
+
+.login-icon {
+	line-height: 45px;
+}
+
+.simple-panel {
+	color: #777;
+	text-align: center
+}
+
+.simple-panel-box {
+	padding: 20px 20px 20px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	background-color: #f6f6f6
+}
+
+.simple-panel-message {
+	padding: 5px 0
+}
+
+.error-msg {
+	color: #c9302c;
+}
+
+.logout-msg {
+	color: #5CB85C;
 }

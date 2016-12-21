@@ -2,25 +2,25 @@ package com.victommasi.eshop.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Blob;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.NumberFormat;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.victommasi.eshop.model.util.Category;
 import com.victommasi.eshop.model.util.Condition;
@@ -30,7 +30,7 @@ import com.victommasi.eshop.model.util.Size;
 @Table(name="product")
 public class Product implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1169566876159921825L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -50,7 +50,6 @@ public class Product implements Serializable {
 	@NotNull(message = "Price cannot be null")
 	@DecimalMin(value = "0.01", message = "Price cannot be less than 0,01")
 	@DecimalMax(value = "9999999.99", message = "Price cannot be more than 9.999.999,99")
-	//@NumberFormat(pattern = "#,##0.00")
 	@Column(name="product_price")
 	private BigDecimal price;
 	
@@ -84,7 +83,11 @@ public class Product implements Serializable {
 	@Column(name="product_image")
 	private byte[] image;
 	
+	@OneToMany(mappedBy="product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<CartItem> cartItems;
+	
 	public Product(){}
+
 
 	public Integer getId() {
 		return id;
@@ -165,6 +168,15 @@ public class Product implements Serializable {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
+
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
+
 
 	@Override
 	public int hashCode() {
