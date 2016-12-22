@@ -5,12 +5,10 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.flywaydb.core.Flyway;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -34,7 +32,7 @@ public class AppConfig {
 		dataSource.setDriverClassName(env.getProperty("jdbc.driverClass"));
 		dataSource.setUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.username"));
-		dataSource.setPassword(env.getProperty("jdbc.password"));	
+		dataSource.setPassword(env.getProperty("jdbc.password"));
 		return dataSource;
 	}
 	
@@ -47,6 +45,7 @@ public class AppConfig {
         return properties;        
 	}
 	
+	
 	@Bean
 	public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();		
@@ -55,7 +54,6 @@ public class AppConfig {
 		
 	}
 	
-	//@DependsOn("flyway")
 	@Bean 
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
             LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -65,16 +63,5 @@ public class AppConfig {
             entityManagerFactoryBean.setJpaProperties(hibernateProperties());
             return entityManagerFactoryBean;
     }
-	
-	/*
-	@Bean //(initMethod = "migrate")
-	public Flyway flyway(){
-		Flyway flyway = new Flyway();
-		flyway.setBaselineOnMigrate(true);
-		flyway.setLocations("classpath:db/migration");
-		flyway.setDataSource(dataSource());
-		flyway.migrate();
-		return flyway;
-	}*/
 	
 }

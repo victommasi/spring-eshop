@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import com.victommasi.eshop.model.Address;
 
-import org.apache.tomcat.jni.Address;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity

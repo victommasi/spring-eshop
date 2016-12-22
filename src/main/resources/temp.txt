@@ -1,0 +1,141 @@
+	/*
+	@Override
+	public List<Product> findAll() {
+		String jpql = "select p from Product p";
+		return this.manager
+				.createQuery(jpql, Product.class)
+				.getResultList();
+	}
+
+	@Override
+	public Product findOne(Integer id) {
+		String jpql = "select p from Product p where p.id = :id";
+		List<Product> productList = this.manager
+				.createQuery(jpql, Product.class)
+				.setParameter("id", id)
+				.getResultList();
+		
+			if(productList.isEmpty()){
+				throw new ProductDoesnotExistsException("Product doesnt exists.");
+			}
+			
+		Product product = productList.get(0);
+		return product;
+	}
+
+	@Override
+	public void save(Product product) {
+		this.manager.persist(product);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		this.manager.remove(findOne(id));
+	}
+	
+	@Override
+	public void update(Product product) {
+		this.manager.merge(product);	
+	}
+	
+	
+	
+	-----------------------------------------
+	
+	
+	private static final String driverClass = "com.mysql.jdbc.Driver";
+	private static final String url = "jdbc:mysql://localhost/eshop";
+	private static final String username = "root";
+	private static final String password = "123456";
+	
+	private static final String dialect = "org.hibernate.dialect.MySQL5Dialect";
+	private static final String showSql = "true";
+	private static final String formatSql = "true";
+	private static final String hbm2dllAuto = "update";
+	private static final String packageToScan = "com.victommasi.eshop.model";
+	
+	/*
+	@Bean 
+	public DataSource dataSource(){
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(env.getProperty("jdbc.driverClass"));
+		dataSource.setUrl(env.getProperty("jdbc.url"));
+		dataSource.setUsername(env.getProperty("jdbc.username"));
+		dataSource.setPassword(env.getProperty("jdbc.password"));	
+		return dataSource;
+	}
+	
+	private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        return properties;        
+	}
+	*/
+	
+	
+	/*
+	@Bean 
+	public DataSource dataSource(){
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(driverClass);
+		dataSource.setUrl(url);
+		dataSource.setUsername(username);
+		dataSource.setPassword(password);	
+		return dataSource;
+	}
+	
+	private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", dialect);
+        properties.put("hibernate.show_sql", showSql);
+        properties.put("hibernate.format_sql", formatSql);
+        properties.put("hibernate.hbm2ddl.auto", hbm2dllAuto);
+        return properties;        
+	}*/
+	
+	/*
+	@Bean //(initMethod = "migrate")
+	public Flyway flyway(){
+		Flyway flyway = new Flyway();
+		flyway.setBaselineOnMigrate(true);
+		flyway.setLocations("classpath:db/migration");
+		flyway.setDataSource(dataSource());
+		flyway.migrate();
+		return flyway;
+	}*/
+	
+	
+	/*
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigure(){
+		PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
+		propertyPlaceholderConfigurer.setLocation(new ClassPathResource("application.properties"));
+		return new PropertySourcesPlaceholderConfigurer();
+		
+	}
+	
+	//implementation that accesses resource bundles
+	@Bean(name = "messageSource")
+	public ReloadableResourceBundleMessageSource getMessageSource() {
+		ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
+		resource.setBasename("classpath:messages");
+		resource.setDefaultEncoding("UTF-8");
+		return resource;
+	}
+	*/
+	
+		/*
+	@Override
+	public User findUserByName(String username) {
+		/*String jpql = "select u from User u where u.username = :username";
+		User user = this.manager
+				.createQuery(jpql, User.class)
+				.setParameter("username", username)
+				.getSingleResult();
+		
+		return user;
+	}
+	*/

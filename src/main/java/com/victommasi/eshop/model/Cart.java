@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,7 +32,7 @@ public class Cart implements Serializable {
 	private List<CartItem> cartItems;
 
 	@OneToOne
-	@Column(name = "cart_customer")
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
 	@Column(name = "cart_total")

@@ -43,24 +43,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return multipartResolver;
 	}
 	
-	
-	
-	/*
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigure(){
-		PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
-		propertyPlaceholderConfigurer.setLocation(new ClassPathResource("application.properties"));
-		return new PropertySourcesPlaceholderConfigurer();
-		
-	}
-	
-	//implementation that accesses resource bundles
-	@Bean(name = "messageSource")
-	public ReloadableResourceBundleMessageSource getMessageSource() {
-		ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
-		resource.setBasename("classpath:messages");
-		resource.setDefaultEncoding("UTF-8");
-		return resource;
-	}
-	*/
 }
