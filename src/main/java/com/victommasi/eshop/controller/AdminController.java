@@ -44,9 +44,14 @@ public class AdminController {
 		return "admin/admin";
 	}
 	
-	@RequestMapping("/productInventory")
+	@RequestMapping("/customers")
+	public String customerPage(){
+		return "admin/customers";
+	}
+	
+	@RequestMapping("/products")
 	public ModelAndView viewInventory(){
-		ModelAndView mv = new ModelAndView("admin/productInventory");
+		ModelAndView mv = new ModelAndView("admin/products");
 		mv.addObject("products", productDao.findAll());
 		return mv;
 	}

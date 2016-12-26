@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="user_role", uniqueConstraints = @UniqueConstraint(
@@ -23,7 +22,6 @@ public class UserRole implements Serializable {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@NotNull
 	@Column(name = "user_role_id", unique = true)
     private Integer id;
     
@@ -31,7 +29,6 @@ public class UserRole implements Serializable {
 	@JoinColumn(name = "username")
     private User user;
     
-	@NotNull
 	@Column(name = "role")
     private String role;
     

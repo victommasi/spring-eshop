@@ -67,3 +67,11 @@
 .logout-msg {
 	color: #5CB85C;
 }
+
+.item-quantity {
+	width: 50px;
+}
+
+.address-panel {
+	background-color: #fff;
+}

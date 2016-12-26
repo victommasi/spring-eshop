@@ -54,19 +54,32 @@
 							<li class="navbar-text">Welcome, ${pageContext.request.userPrincipal.name}!</li>
 	                       
 	                        <c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
-	                            <li><a href="<c:url value="/customer/cart" />">Cart</a></li>
+	                            <li>
+	                            	<a href="<c:url value="/customer/cart" />">Cart
+	                            		<i class="glyphicon glyphicon-shopping-cart"></i>	
+	                            	</a>
+	                            </li>
 	                        </c:if>
 	                        <c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">
-	                            <li><a href="<c:url value="/admin" />">Admin</a></li>
+	                            <li>
+	                            	<a href="<c:url value="/admin" />">Settings
+									    <i class="glyphicon glyphicon-cog"> </i>                        
+	                            	</a>
+	                            </li>
 	                        </c:if>
 	                        
-	                        <li><a href="<c:url value="/logout" />">Logout</a></li>
+	                        <li>
+	                        	<a href="<c:url value="/logout" />">Logout
+		                        	<i class="glyphicon glyphicon-log-out"></i>
+	                        	</a>
+	                        </li>
 						</c:if>
 					</ul>
 					<c:if test="${pageContext.request.userPrincipal.name  == null}">
 						<form  class="navbar-form navbar-right">
-							<a href="<c:url value="/login" />" class="btn btn-primary">Login</a>
-							<a href="<c:url value="/register" />" class="btn btn-link">Register</a>
+							<a href="<c:url value="/login" />" class="btn btn-primary">Login
+							</a>
+							<a href="<c:url value="/customer/register" />" class="btn btn-link">Register</a>
 						</form>
 					</c:if>
 				</div>

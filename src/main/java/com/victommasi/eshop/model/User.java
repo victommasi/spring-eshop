@@ -1,7 +1,6 @@
 package com.victommasi.eshop.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -25,7 +24,6 @@ public class User implements Serializable {
 	@Column(name = "password")
 	private String password;
 	
-	@NotNull
 	@Column(name="email")
 	private String email;
 	
@@ -35,6 +33,9 @@ public class User implements Serializable {
 	@NotNull
 	@Column(name = "enabled")
 	private boolean enabled; 
+	
+	@NotNull
+	private Integer customerId;
 	
 	
 	public User(){}
@@ -80,6 +81,14 @@ public class User implements Serializable {
 		this.enabled = enabled;
 	}
 
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
 
 	@Override
 	public int hashCode() {
