@@ -13,7 +13,7 @@ E-commerce shoes store built with Java and Spring framework. This Spring applica
 ### USAGE:
 1. Clone or download the project
 2. Deploy application into tomcat 8 or 9.		
-3. Access application at http://localhost:8080/spring-eshop		
+3. Access application at http://localhost:8080/eshop		
 4. Project is missing application.properties due to personal privacy, 	
 so you need to create it yourself, a nice example is shown below.
 5. Put the file at src/main/resources
