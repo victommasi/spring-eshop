@@ -48,10 +48,11 @@
 			            <form:input type="password" path="password" id="password" class="form-control"/>
 		        	</div>
 		
-					<div class="col-sm-3 form-group pull-right address-panel">
+					<!-- <div class="col-sm-3 form-group pull-right address-panel">
 		        		<label for="country">Country</label> <form:errors path="address.country" cssStyle="color: #c9302c;" />
 			            <form:input path="address.country" id="country" class="form-control"/>
 			        </div>
+			        -->
 		        </div>
 		       
 		        <div class="row">
@@ -68,7 +69,8 @@
 		        	
 		        	<div class="col-sm-3 form-group pull-right address-panel">
 		        		<label for="state">State</label> <form:errors path="address.state" cssStyle="color: #c9302c;" />
-			            <form:input path="address.state" id="state" class="form-control"/>
+			            <form:select path="address.state" id="states" class="form-control">
+			            </form:select>
 			        </div>
 		        </div>
 		
@@ -85,7 +87,8 @@
 		
 					<div class="col-sm-3 form-group pull-right address-panel">
 		        		<label for="city">City</label> <form:errors path="address.city" cssStyle="color: #c9302c;" />
-			            <form:input path="address.city" id="city" class="form-control"/>
+			            <form:select path="address.city" id="cities" class="form-control">
+			            </form:select>
 			        </div>
 			    </div>
 			        
@@ -109,5 +112,5 @@
 	        </form:form>
         </div>
 
-
 <%@ include file="/WEB-INF/views/template/footer.jsp" %>
+<script src="<c:url value="/resources/js/dynamic-select.js" />"></script>

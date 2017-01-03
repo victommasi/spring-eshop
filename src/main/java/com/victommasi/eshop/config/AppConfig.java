@@ -16,6 +16,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @EnableTransactionManagement
@@ -64,4 +65,13 @@ public class AppConfig {
             return entityManagerFactoryBean;
     }
 	
+	@Bean
+	public CharacterEncodingFilter characterEncodingFilter() {
+	    CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+	    characterEncodingFilter.setForceEncoding(true);
+	    characterEncodingFilter.setEncoding("UTF-8");
+	    return characterEncodingFilter;
+	}
+	
 }
+

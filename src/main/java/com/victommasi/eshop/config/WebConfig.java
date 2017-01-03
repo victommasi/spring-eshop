@@ -1,9 +1,12 @@
 package com.victommasi.eshop.config;
 
 
+import java.nio.charset.Charset;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -33,6 +36,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		resolver.setContentType("text/html;charset=UTF-8");
 		resolver.setSuffix(".jsp");
 		return resolver;
+	}
+	
+	@Bean
+	public StringHttpMessageConverter stringHttpMessageConverter() {
+	    return new StringHttpMessageConverter(Charset.forName("UTF-8"));
 	}
 
 	@Bean(name = "filterMultipartResolver")

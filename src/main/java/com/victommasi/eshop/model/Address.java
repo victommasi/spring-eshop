@@ -39,7 +39,7 @@ public class Address implements Serializable {
 	@Column(name = "address_state")
 	private String state;
 
-	@NotNull(message = "Country name can't be null")
+	//@NotNull(message = "Country name can't be null")
 	@Column(name = "address_country")
 	private String country;
 

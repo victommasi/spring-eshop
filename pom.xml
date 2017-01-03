@@ -19,6 +19,7 @@
 		<jstl.version>1.2</jstl.version> 
 		<jackson.databind-version>2.5.1</jackson.databind-version>
 		<junit.version>4.11</junit.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
   <dependencies>
